@@ -2,7 +2,7 @@
 
 A sophisticated AI-powered research report generation system built with LangGraph, leveraging a multi-agent architecture for automated research planning, web search, and structured report generation.
 
-![Agent Workflow](https://i.imgur.com/STSC73k.png)
+![Agent Workflow](langgraph.png)
 
 ## 🚀 Overview
 
