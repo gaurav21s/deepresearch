@@ -1,0 +1,9 @@
+[theme]
+primaryColor = "#FF3CAC" 
+backgroundColor = "#141E30"
+secondaryBackgroundColor = "#243B55" 
+textColor = "#EAEAEA" 
+
+[server]
+enableCORS = false
+enableXsrfProtection = false 
