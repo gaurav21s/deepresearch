@@ -1770,14 +1770,8 @@ if st.session_state.authenticated:
                     logger.error(f"Detailed error saving to storage: {str(save_error)}")
                 
                 # Create columns for the PDF preview and download button
-                col1, col2 = st.columns([3, 1])
-                
+                col1, col2 = st.columns([1, 1])
                 with col1:
-                    # Show a preview of the PDF
-                    with st.expander("Preview PDF", expanded=True):
-                        show_pdf(temp_pdf_path)
-                
-                with col2:
                     st.markdown("<div style='height: 50px;'></div>", unsafe_allow_html=True)
                     with open(temp_pdf_path, "rb") as pdf_file:
                         pdf_data = pdf_file.read()
@@ -1791,6 +1785,7 @@ if st.session_state.authenticated:
                         key="download_pdf_main"
                     )
                     
+                with col2:
                     # Copy button with fixed functionality
                     copy_button = st.button("Copy Report", key="copy_report_main")
                     if copy_button:
