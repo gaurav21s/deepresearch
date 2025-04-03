@@ -1453,7 +1453,7 @@ if st.session_state.authenticated:
 
     # Input form for new report generation
     with st.form("report_form"):
-        st.markdown("<h3 style='color: #FF3CAC; margin-bottom: 0.1rem;'>What would you like to research?</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color: #FF3CAC; margin-bottom: 0.1rem;'>What topic or question would you like to research?</h3>", unsafe_allow_html=True)
         topic = st.text_input(
             label="Research Topic",  # Add a proper label
             label_visibility="collapsed",  # Hide the label but maintain accessibility
