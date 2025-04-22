@@ -21,6 +21,7 @@ from pathlib import Path
 import js as pjs
 import json
 from dotenv import load_dotenv
+import re
 
 # Configure logging
 logging.basicConfig(
@@ -511,7 +512,10 @@ def save_report(user_id, topic, content):
     
     # Create a unique filename with timestamp
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # More extensive sanitization to remove problematic URL characters
     safe_topic = topic.replace(' ', '_').replace('/', '_')  # Basic sanitize
+    # Enhanced sanitization to remove URL-unsafe characters
+    safe_topic = re.sub(r'[&:?#<>{}|\\^~\[\]`\'"]', '_', safe_topic)
     file_name = f"{safe_topic}_{ts}.md"
     
     # Full path including user folder

@@ -4,6 +4,7 @@ from datetime import datetime
 import traceback
 from dotenv import load_dotenv
 import supabase
+import re
 
 # Load environment variables
 load_dotenv()
@@ -42,6 +43,11 @@ if " " in file_name:
     print(f"Warning: Filename contains spaces: {file_name}")
     file_name = file_name.replace(" ", "_")
     print(f"Renamed to: {file_name}")
+
+# Remove URL-unsafe characters
+file_name = re.sub(r'[&:?#<>{}|\\^~\[\]`\'"]', '_', file_name)
+if file_name != os.path.basename(file_path):
+    print(f"Sanitized filename to: {file_name}")
 
 # Bucket name
 bucket_name = "deepresearch-reports"
@@ -83,6 +89,8 @@ def upload_file(file_path, user_id="test_user"):
     file_name = os.path.basename(file_path)
     # Ensure no spaces in filename
     file_name = file_name.replace(" ", "_")
+    # Enhanced sanitization to remove URL-unsafe characters
+    file_name = re.sub(r'[&:?#<>{}|\\^~\[\]`\'"]', '_', file_name)
     
     user_folder = f"{user_id}/"
     storage_path = f"{user_folder}{file_name}"
